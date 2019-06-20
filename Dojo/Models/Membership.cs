@@ -26,7 +26,6 @@ namespace Dojo.Models
         public string Description { get; set; }
         public string Price { get; set; }
         public string Duration { get; set; }
-        public System.DateTime ValidTill { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MembershipPayment> MembershipPayments { get; set; }

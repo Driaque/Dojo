@@ -10,110 +10,109 @@ using Dojo.Models;
 
 namespace Dojo.Controllers
 {
-    public class MembershipsController : Controller
+    public class RanksController : Controller
     {
         private AdtProjectEntities db = new AdtProjectEntities();
 
-        // GET: Memberships
+        // GET: Ranks
         public ActionResult Index()
         {
-            return View(db.Memberships.ToList());
+            return View(db.Ranks.ToList());
         }
 
-        // GET: Memberships/Details/5
+        // GET: Ranks/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Membership membership = db.Memberships.Find(id);
-            if (membership == null)
+            Rank rank = db.Ranks.Find(id);
+            if (rank == null)
             {
                 return HttpNotFound();
             }
-            return View(membership);
+            return View(rank);
         }
 
-        // GET: Memberships/Create
+        // GET: Ranks/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Memberships/Create
+        // POST: Ranks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Membership_ID,Name,Description,Price,Duration,ValidTill")] Membership membership)
+        public ActionResult Create([Bind(Include = "Rank_ID,Title")] Rank rank)
         {
             if (ModelState.IsValid)
             {
-                //membership.ValidTill = DateTime.Now.AddDays(Convert.ToDouble(membership.Duration));
-                var count = db.Memberships.ToList().Count();
-                membership.Membership_ID = (count+1).ToString();
-                db.Memberships.Add(membership);
+                var count = db.Ranks.ToList().Count();
+                rank.Rank_ID = (count + 1).ToString();
+                db.Ranks.Add(rank);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(membership);
+            return View(rank);
         }
 
-        // GET: Memberships/Edit/5
+        // GET: Ranks/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Membership membership = db.Memberships.Find(id);
-            if (membership == null)
+            Rank rank = db.Ranks.Find(id);
+            if (rank == null)
             {
                 return HttpNotFound();
             }
-            return View(membership);
+            return View(rank);
         }
 
-        // POST: Memberships/Edit/5
+        // POST: Ranks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Membership_ID,Name,Description,Price,Duration,ValidTill")] Membership membership)
+        public ActionResult Edit([Bind(Include = "Rank_ID,Title")] Rank rank)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(membership).State = EntityState.Modified;
+                db.Entry(rank).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(membership);
+            return View(rank);
         }
 
-        // GET: Memberships/Delete/5
+        // GET: Ranks/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Membership membership = db.Memberships.Find(id);
-            if (membership == null)
+            Rank rank = db.Ranks.Find(id);
+            if (rank == null)
             {
                 return HttpNotFound();
             }
-            return View(membership);
+            return View(rank);
         }
 
-        // POST: Memberships/Delete/5
+        // POST: Ranks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Membership membership = db.Memberships.Find(id);
-            db.Memberships.Remove(membership);
+            Rank rank = db.Ranks.Find(id);
+            db.Ranks.Remove(rank);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

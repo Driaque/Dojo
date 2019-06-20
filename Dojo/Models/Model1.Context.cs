@@ -13,10 +13,10 @@ namespace Dojo.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AdtProjectEntities4 : DbContext
+    public partial class AdtProjectEntities : DbContext
     {
-        public AdtProjectEntities4()
-            : base("name=AdtProjectEntities4")
+        public AdtProjectEntities()
+            : base("name=AdtProjectEntities")
         {
         }
     
@@ -37,5 +37,6 @@ namespace Dojo.Models
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<TestPayment> TestPayments { get; set; }
+        public virtual DbSet<HAS_CERTIFICATE> HAS_CERTIFICATE { get; set; }
     }
 }

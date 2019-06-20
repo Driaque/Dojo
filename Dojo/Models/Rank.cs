@@ -17,6 +17,7 @@ namespace Dojo.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rank()
         {
+            this.Certificates = new HashSet<Certificate>();
             this.Classes = new HashSet<Class>();
             this.Students = new HashSet<Student>();
             this.Tests = new HashSet<Test>();
@@ -25,6 +26,8 @@ namespace Dojo.Models
         public string Rank_ID { get; set; }
         public string Title { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Certificate> Certificates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Classes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

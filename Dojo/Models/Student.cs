@@ -19,7 +19,7 @@ namespace Dojo.Models
         {
             this.Attendances = new HashSet<Attendance>();
             this.ProductPayments = new HashSet<ProductPayment>();
-            this.Certificates = new HashSet<Certificate>();
+            this.HAS_CERTIFICATE = new HashSet<HAS_CERTIFICATE>();
             this.Parents = new HashSet<Parent>();
         }
     
@@ -39,6 +39,7 @@ namespace Dojo.Models
         public string Rank_ID { get; set; }
         public string Parent_ID { get; set; }
         public string AttendanceCount { get; set; }
+        public Nullable<System.DateTime> MembershipValidTill { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attendance> Attendances { get; set; }
@@ -47,7 +48,7 @@ namespace Dojo.Models
         public virtual ICollection<ProductPayment> ProductPayments { get; set; }
         public virtual Rank Rank { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Certificate> Certificates { get; set; }
+        public virtual ICollection<HAS_CERTIFICATE> HAS_CERTIFICATE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parent> Parents { get; set; }
     }

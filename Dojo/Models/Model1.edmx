@@ -19,7 +19,7 @@
           </Key>
           <Property Name="Certificate_ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="DateObtained" Type="date" Nullable="false" />
+          <Property Name="Rank_ID" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Class">
           <Key>
@@ -42,6 +42,7 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_CERTIFICATE' does not have a pr
           </Key>
           <Property Name="STUDENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Certificate_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateObtained" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -62,7 +63,6 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Duration" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="ValidTill" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="MembershipPayment">
           <Key>
@@ -132,6 +132,7 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <Property Name="Rank_ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Parent_ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AttendanceCount" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="MembershipValidTill" Type="date" />
         </EntityType>
         <EntityType Name="Test">
           <Key>
@@ -160,6 +161,18 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
             </Principal>
             <Dependent Role="Attendance">
               <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Certificate_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="Rank_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -323,7 +336,8 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <EntitySet Name="HAS_CERTIFICATE" EntityType="Self.HAS_CERTIFICATE" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [HAS_CERTIFICATE].[STUDENT_ID] AS [STUDENT_ID], 
-    [HAS_CERTIFICATE].[Certificate_ID] AS [Certificate_ID]
+    [HAS_CERTIFICATE].[Certificate_ID] AS [Certificate_ID], 
+    [HAS_CERTIFICATE].[DateObtained] AS [DateObtained]
     FROM [dbo].[HAS_CERTIFICATE] AS [HAS_CERTIFICATE]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="HAS_PARENT" EntityType="Self.HAS_PARENT" store:Type="Tables" store:Schema="dbo">
@@ -335,6 +349,10 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <AssociationSet Name="FK_Attendance_Student" Association="Self.FK_Attendance_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Certificate_Rank" Association="Self.FK_Certificate_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Certificate" EntitySet="Certificate" />
           </AssociationSet>
           <AssociationSet Name="FK_Class_Rank" Association="Self.FK_Class_Rank">
             <End Role="Rank" EntitySet="Rank" />
@@ -405,8 +423,9 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           </Key>
           <Property Name="Certificate_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateObtained" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Students" Relationship="Self.HAS_CERTIFICATE" FromRole="Certificate" ToRole="Student" />
+          <Property Name="Rank_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Rank" Relationship="Self.FK_Certificate_Rank" FromRole="Certificate" ToRole="Rank" />
+          <NavigationProperty Name="HAS_CERTIFICATE" Relationship="Self.FK_HAS_CERTIFICATE_Certificate" FromRole="Certificate" ToRole="HAS_CERTIFICATE" />
         </EntityType>
         <EntityType Name="Class">
           <Key>
@@ -430,7 +449,6 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="ValidTill" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="MembershipPayments" Relationship="Self.FK_MembershipPayment_Membership" FromRole="Membership" ToRole="MembershipPayment" />
           <NavigationProperty Name="Students" Relationship="Self.FK_Student_Membership" FromRole="Membership" ToRole="Student" />
         </EntityType>
@@ -486,6 +504,7 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           </Key>
           <Property Name="Rank_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Certificates" Relationship="Self.FK_Certificate_Rank" FromRole="Rank" ToRole="Certificate" />
           <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Rank" FromRole="Rank" ToRole="Class" />
           <NavigationProperty Name="Students" Relationship="Self.FK_Student_Rank" FromRole="Rank" ToRole="Student" />
           <NavigationProperty Name="Tests" Relationship="Self.FK_Test_Rank" FromRole="Rank" ToRole="Test" />
@@ -510,11 +529,12 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <Property Name="Rank_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Parent_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AttendanceCount" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="MembershipValidTill" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Attendances" Relationship="Self.FK_Attendance_Student" FromRole="Student" ToRole="Attendance" />
           <NavigationProperty Name="Membership" Relationship="Self.FK_Student_Membership" FromRole="Student" ToRole="Membership" />
           <NavigationProperty Name="ProductPayments" Relationship="Self.FK_Payment_Student" FromRole="Student" ToRole="ProductPayment" />
           <NavigationProperty Name="Rank" Relationship="Self.FK_Student_Rank" FromRole="Student" ToRole="Rank" />
-          <NavigationProperty Name="Certificates" Relationship="Self.HAS_CERTIFICATE" FromRole="Student" ToRole="Certificate" />
+          <NavigationProperty Name="HAS_CERTIFICATE" Relationship="Self.FK_HAS_CERTIFICATE_Student" FromRole="Student" ToRole="HAS_CERTIFICATE" />
           <NavigationProperty Name="Parents" Relationship="Self.HAS_PARENT" FromRole="Student" ToRole="Parent" />
         </EntityType>
         <EntityType Name="Test">
@@ -538,6 +558,17 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Test" Relationship="Self.FK_TestPayment_Test" FromRole="TestPayment" ToRole="Test" />
         </EntityType>
+        <EntityType Name="HAS_CERTIFICATE">
+          <Key>
+            <PropertyRef Name="STUDENT_ID" />
+            <PropertyRef Name="Certificate_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Certificate_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateObtained" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Certificate" Relationship="Self.FK_HAS_CERTIFICATE_Certificate" FromRole="HAS_CERTIFICATE" ToRole="Certificate" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_HAS_CERTIFICATE_Student" FromRole="HAS_CERTIFICATE" ToRole="Student" />
+        </EntityType>
         <Association Name="FK_Attendance_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
@@ -547,6 +578,30 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
             </Principal>
             <Dependent Role="Attendance">
               <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Certificate_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAS_CERTIFICATE_Certificate">
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="1" />
+          <End Role="HAS_CERTIFICATE" Type="Self.HAS_CERTIFICATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certificate">
+              <PropertyRef Name="Certificate_ID" />
+            </Principal>
+            <Dependent Role="HAS_CERTIFICATE">
+              <PropertyRef Name="Certificate_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -634,6 +689,18 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HAS_CERTIFICATE_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="HAS_CERTIFICATE" Type="Self.HAS_CERTIFICATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="HAS_CERTIFICATE">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TestPayment_Test">
           <End Role="Test" Type="Self.Test" Multiplicity="1" />
           <End Role="TestPayment" Type="Self.TestPayment" Multiplicity="*" />
@@ -646,15 +713,11 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="HAS_CERTIFICATE">
-          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
-          <End Role="Student" Type="Self.Student" Multiplicity="*" />
-        </Association>
         <Association Name="HAS_PARENT">
           <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="AdtProjectEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AdtProjectEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Attendances" EntityType="Self.Attendance" />
           <EntitySet Name="Certificates" EntityType="Self.Certificate" />
           <EntitySet Name="Classes" EntityType="Self.Class" />
@@ -667,9 +730,18 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <EntitySet Name="Students" EntityType="Self.Student" />
           <EntitySet Name="Tests" EntityType="Self.Test" />
           <EntitySet Name="TestPayments" EntityType="Self.TestPayment" />
+          <EntitySet Name="HAS_CERTIFICATE" EntityType="Self.HAS_CERTIFICATE" />
           <AssociationSet Name="FK_Attendance_Student" Association="Self.FK_Attendance_Student">
             <End Role="Student" EntitySet="Students" />
             <End Role="Attendance" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Certificate_Rank" Association="Self.FK_Certificate_Rank">
+            <End Role="Rank" EntitySet="Ranks" />
+            <End Role="Certificate" EntitySet="Certificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAS_CERTIFICATE_Certificate" Association="Self.FK_HAS_CERTIFICATE_Certificate">
+            <End Role="Certificate" EntitySet="Certificates" />
+            <End Role="HAS_CERTIFICATE" EntitySet="HAS_CERTIFICATE" />
           </AssociationSet>
           <AssociationSet Name="FK_Class_Rank" Association="Self.FK_Class_Rank">
             <End Role="Rank" EntitySet="Ranks" />
@@ -699,13 +771,13 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
             <End Role="Rank" EntitySet="Ranks" />
             <End Role="Test" EntitySet="Tests" />
           </AssociationSet>
+          <AssociationSet Name="FK_HAS_CERTIFICATE_Student" Association="Self.FK_HAS_CERTIFICATE_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="HAS_CERTIFICATE" EntitySet="HAS_CERTIFICATE" />
+          </AssociationSet>
           <AssociationSet Name="FK_TestPayment_Test" Association="Self.FK_TestPayment_Test">
             <End Role="Test" EntitySet="Tests" />
             <End Role="TestPayment" EntitySet="TestPayments" />
-          </AssociationSet>
-          <AssociationSet Name="HAS_CERTIFICATE" Association="Self.HAS_CERTIFICATE">
-            <End Role="Certificate" EntitySet="Certificates" />
-            <End Role="Student" EntitySet="Students" />
           </AssociationSet>
           <AssociationSet Name="HAS_PARENT" Association="Self.HAS_PARENT">
             <End Role="Parent" EntitySet="Parents" />
@@ -717,7 +789,7 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AdtProjectModelStoreContainer" CdmEntityContainer="AdtProjectEntities4">
+        <EntityContainerMapping StorageEntityContainer="AdtProjectModelStoreContainer" CdmEntityContainer="AdtProjectEntities">
           <EntitySetMapping Name="Attendances">
             <EntityTypeMapping TypeName="AdtProjectModel.Attendance">
               <MappingFragment StoreEntitySet="Attendance">
@@ -732,7 +804,7 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
               <MappingFragment StoreEntitySet="Certificate">
                 <ScalarProperty Name="Certificate_ID" ColumnName="Certificate_ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="DateObtained" ColumnName="DateObtained" />
+                <ScalarProperty Name="Rank_ID" ColumnName="Rank_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -757,7 +829,6 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="ValidTill" ColumnName="ValidTill" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -833,6 +904,7 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
                 <ScalarProperty Name="Rank_ID" ColumnName="Rank_ID" />
                 <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
                 <ScalarProperty Name="AttendanceCount" ColumnName="AttendanceCount" />
+                <ScalarProperty Name="MembershipValidTill" ColumnName="MembershipValidTill" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -856,14 +928,15 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="HAS_CERTIFICATE" TypeName="AdtProjectModel.HAS_CERTIFICATE" StoreEntitySet="HAS_CERTIFICATE">
-            <EndProperty Name="Certificate">
-              <ScalarProperty Name="Certificate_ID" ColumnName="Certificate_ID" />
-            </EndProperty>
-            <EndProperty Name="Student">
-              <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="HAS_CERTIFICATE">
+            <EntityTypeMapping TypeName="AdtProjectModel.HAS_CERTIFICATE">
+              <MappingFragment StoreEntitySet="HAS_CERTIFICATE">
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="Certificate_ID" ColumnName="Certificate_ID" />
+                <ScalarProperty Name="DateObtained" ColumnName="DateObtained" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="HAS_PARENT" TypeName="AdtProjectModel.HAS_PARENT" StoreEntitySet="HAS_PARENT">
             <EndProperty Name="Parent">
               <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />

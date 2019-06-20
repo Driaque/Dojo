@@ -17,14 +17,15 @@ namespace Dojo.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Certificate()
         {
-            this.Students = new HashSet<Student>();
+            this.HAS_CERTIFICATE = new HashSet<HAS_CERTIFICATE>();
         }
     
         public string Certificate_ID { get; set; }
         public string Name { get; set; }
-        public System.DateTime DateObtained { get; set; }
+        public string Rank_ID { get; set; }
     
+        public virtual Rank Rank { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<HAS_CERTIFICATE> HAS_CERTIFICATE { get; set; }
     }
 }
