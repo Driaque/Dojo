@@ -123,7 +123,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "Products")"><i class="fa fa-plus-square"></i> Add New Inventory Item</a></li>
+                                    <li><a href="@Url.Action("Create", "Products")"><i class="fa fa-plus-square"></i> Add    Item</a></li>
+                                    <li><a href="@Url.Action("Create", "ProductPayments")"><i class="fa fa-plus-square"></i> New  Purchase </a></li>
                                     <li><a href="@Url.Action("Index", "Products")"><i class="fa fa-eye"></i> View Inventory</a></li>
                                 </ul>
                             </li>
@@ -137,120 +138,61 @@
                                 <ul class="treeview-menu">
                                     <li><a href="@Url.Action("Create", "Memberships")"><i class="fa fa-plus-square"></i> Create Skill</a></li>
                                     <li><a href="@Url.Action("Index", "Memberships")"><i class="fa fa-eye"></i> View Skills</a></li>
+                                    <li><a href="@Url.Action("Create", "MembershipPayments")"><i class="fa fa-plus-square"></i> New Subscription </a></li>
+                                    <li><a href="@Url.Action("Index", "MembershipPayments")"><i class="fa fa-plus-square"></i> View Subscriptions </a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-bell-o"></i> <span>Supply</span>
+                                    <i class="fa fa-bell-o"></i> <span>Ranks</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "SUPPLies")"><i class="fa fa-plus-square"></i> Create Supply</a></li>
-                                    <li><a href="@Url.Action("Index", "SUPPLies")"><i class="fa fa-eye"></i> View Supplies</a></li>
+                                    <li><a href="@Url.Action("Create", "Ranks")"><i class="fa fa-plus-square"></i> Add Ranks</a></li>
+                                    <li><a href="@Url.Action("Index", "Ranks")"><i class="fa fa-eye"></i> View Ranks</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-truck"></i> <span>Vendor</span>
+                                    <i class="fa fa-truck"></i> <span>Test</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "VENDORs")"><i class="fa fa-plus-square"></i> Create Vendor</a></li>
-                                    <li><a href="@Url.Action("Index", "VENDORs")"><i class="fa fa-eye"></i> View Vendors</a></li>
+                                    <li><a href="@Url.Action("Create", "Tests")"><i class="fa fa-plus-square"></i> Create Test</a></li>
+                                    <li><a href="@Url.Action("Index", "Tests")"><i class="fa fa-eye"></i> View Tests</a></li>
+                                    <li><a href="@Url.Action("Create", "TestPayments")"><i class="fa fa-plus-square"></i> New Purchase </a></li>
+                                    <li><a href="@Url.Action("Index", "TestPayments")"><i class="fa fa-plus-square"></i> View Purchases </a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-user"></i> <span>SalesPerson</span>
+                                    <i class="fa fa-user"></i> <span>Parents</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "SALESPERSONs")"><i class="fa fa-plus-square"></i> Create Salesperson</a></li>
-                                    <li><a href="@Url.Action("Index", "SALESPERSONs")"><i class="fa fa-eye"></i> View Salespersons</a></li>
+                                    <li><a href="@Url.Action("Create", "Parents")"><i class="fa fa-plus-square"></i> Add Parents</a></li>
+                                    <li><a href="@Url.Action("Index", "Parents")"><i class="fa fa-eye"></i> View Parents</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-industry"></i> <span>Work Center</span>
+                                    <i class="fa fa-industry"></i> <span>Certificate</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "WORKCENTERs")"><i class="fa fa-plus-square"></i> Create Work Center</a></li>
-                                    <li><a href="@Url.Action("Index", "WORKCENTERs")"><i class="fa fa-eye"></i> View Work Centers</a></li>
+                                    <li><a href="@Url.Action("Create", "Certificates")"><i class="fa fa-plus-square"></i> Add Certificate</a></li>
+                                    <li><a href="@Url.Action("Index", "Certificates")"><i class="fa fa-eye"></i> View Certificate</a></li>
+                                    <li><a href="@Url.Action("Create", "HAS_CERTIFICATE")"><i class="fa fa-plus-square"></i> Issue to Student</a></li>
                                 </ul>
                             </li>
-
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-bell"></i> <span>Order</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "ORDERs")"><i class="fa fa-plus-square"></i> Create Order</a></li>
-                                    <li><a href="@Url.Action("Index", "ORDERs")"><i class="fa fa-eye"></i> View Orders</a></li>
-                                </ul>
-                            </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-sitemap"></i> <span>Order Lines</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "OrderedLines")"><i class="fa fa-plus-square"></i> Create Order Lines</a></li>
-                                    <li><a href="@Url.Action("Index", "OrderedLines")"><i class="fa fa-eye"></i> View Orders Lines</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-tags"></i> <span>Product</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "PRODUCTs")"><i class="fa fa-plus-square"></i> Create Product</a></li>
-                                    <li><a href="@Url.Action("Index", "PRODUCTs")"><i class="fa fa-eye"></i> View Products</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-cubes"></i> <span>Product Line</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "PRODUCT_LINE")"><i class="fa fa-plus-square"></i> Create Product Line</a></li>
-                                    <li><a href="@Url.Action("Index", "PRODUCT_LINE")"><i class="fa fa-eye"></i> View Product Lines</a></li>
-                                </ul>
-                            </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-hand-paper-o"></i> <span>Uses</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("Create", "US")"><i class="fa fa-plus-square"></i> Create Use</a></li>
-                                    <li><a href="@Url.Action("Index", "US")"><i class="fa fa-eye"></i> View Uses</a></li>
-                                </ul>
-                            </li>
-                            
 
                         }
 
@@ -274,7 +216,7 @@
                 <b>Version</b> 1.5.1
             </div>
 
-            <strong>Copyright &copy; @DateTime.Now.Year <a href="~/Views/Home/About.cshtml">S1G1-PVFAPP</a>.</strong> All rights Reserved.
+            <strong>Copyright &copy; @DateTime.Now.Year <a href="~/Views/Home/About.cshtml">Dojo-APP</a>.</strong> All rights Reserved.
         </footer>
 
     </div>
