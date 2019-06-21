@@ -1,60 +1,66 @@
 ﻿@model IEnumerable<Dojo.Models.Test>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Test";
 }
 
-<h2>Index</h2>
+<div class="box box-info">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rank.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Profit)
-        </th>
-        <th></th>
-    </tr>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rank.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Profit)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Test_ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Test_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Test_ID })
-        </td>
-    </tr>
-}
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rank.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profit)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
-<div>
-    <h5>Total Profit from Product</h5> @(ViewBag.TotalProfit != null ? ViewBag.TotalProfit : string.Empty)
-</div>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rank.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profit)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Test_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Test_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Test_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        <h5><b>Total Profit from Product:  @(ViewBag.TotalProfit != null ? ViewBag.TotalProfit : string.Empty)</b></h5>
+    </div>
+    </div>

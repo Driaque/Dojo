@@ -1,34 +1,38 @@
 ﻿@model Dojo.Models.Attendance
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Attendance Details";
 }
 
-<h2>Details</h2>
+<div class="box box-info">
 
-<div>
-    <h4>Attendance</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Student.STUDENT_Fname)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Attendance_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Student.STUDENT_Fname)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Attendance_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

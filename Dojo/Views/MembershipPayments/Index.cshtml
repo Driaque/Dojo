@@ -1,45 +1,49 @@
 ﻿@model IEnumerable<Dojo.Models.MembershipPayment>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "View Membership Subscriptions";
 }
 
-<h2>Index</h2>
+<div class="box box-info">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Membership.Name)
-        </th>
-        <th></th>
-    </tr>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Membership.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.MembershipPayment_ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.MembershipPayment_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.MembershipPayment_ID })
-        </td>
-    </tr>
-}
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.STUDENT_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Membership.Name)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.STUDENT_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Membership.Name)
+                </td>
+                <td>
+                   @Html.ActionLink("Details", "Details", new { id = item.MembershipPayment_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

@@ -4,36 +4,42 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="box box-info">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
-        </th>
-        <th></th>
-    </tr>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student.STUDENT_Fname)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Attendance_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Attendance_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Attendance_ID })
-        </td>
-    </tr>
-}
+    <p>
+        @Html.ActionLink("Take New Attendance", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.STUDENT_Fname)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Attendance_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Attendance_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Attendance_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

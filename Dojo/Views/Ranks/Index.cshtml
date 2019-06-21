@@ -1,33 +1,39 @@
 ﻿@model IEnumerable<Dojo.Models.Rank>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Ranks";
 }
 
-<h2>Index</h2>
+<div class="box box-info">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th></th>
-    </tr>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Rank_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Rank_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Rank_ID })
-        </td>
-    </tr>
-}
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Rank_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Rank_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Rank_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

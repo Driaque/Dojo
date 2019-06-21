@@ -1,72 +1,77 @@
 ﻿@model Dojo.Models.Class
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Class";
 }
 
-<h2>Delete</h2>
+<div class="box box-info">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Class</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ClaseCode)
-        </dt>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ClaseCode)
-        </dd>
+    <h4>Are you sure you want to delete this?</h4>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ClaseCode)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ClaseCode)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Day)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Day)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Day)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Day)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EndTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StartTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Rank.Title)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Rank.Title)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EndTime)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Rank.Title)
+            </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            <dd>
+                @Html.DisplayFor(model => model.Rank.Title)
+            </dd>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+    </div>

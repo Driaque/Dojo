@@ -1,58 +1,62 @@
 ﻿@model Dojo.Models.Product
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Inventory Details";
 }
 
-<h2>Details</h2>
+<div class="box box-info">
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDescription)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CostPrice)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CostPrice)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ProductDescription)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SellingPrice)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CostPrice)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SellingPrice)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CostPrice)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.QuantityInStock)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.QuantityInStock)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.SellingPrice)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Product_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.QuantityInStock)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.QuantityInStock)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Product_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

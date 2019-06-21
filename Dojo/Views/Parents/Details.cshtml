@@ -1,82 +1,86 @@
 ﻿@model Dojo.Models.Parent
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Parent Details";
 }
 
-<h2>Details</h2>
+<div class="box box-info">
 
-<div>
-    <h4>Parent</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Parent_FName)
-        </dt>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Parent_FName)
-        </dd>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Parent_LName)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Parent_FName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Parent_LName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Parent_FName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Parent_Title)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Parent_LName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Parent_Title)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Parent_LName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Parent_Title)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Parent_Title)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StreetName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StreetName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Town)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.StreetName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Town)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StreetName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PostalCode)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Town)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PostalCode)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Town)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Parent_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PostalCode)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Parent_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

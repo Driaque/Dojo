@@ -1,58 +1,62 @@
 ﻿@model Dojo.Models.ProductPayment
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Purchase Details";
 }
 
-<h2>Details</h2>
+<div class="box box-info">
 
-<div>
-    <h4>ProductPayment</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Total)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Product.ProductName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Total)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Product.ProductName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Total)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Student.STUDENT_Fname)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Product.ProductName)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Payment_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Student.STUDENT_Fname)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Payment_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

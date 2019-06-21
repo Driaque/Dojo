@@ -1,42 +1,46 @@
 ﻿@model Dojo.Models.MembershipPayment
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Subscription Details";
 }
 
-<h2>Details</h2>
+<div class="box box-info">
 
-<div>
-    <h4>MembershipPayment</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.STUDENT_ID)
-        </dt>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.STUDENT_ID)
-        </dd>
+    <div>
+ 
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.STUDENT_ID)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.STUDENT_ID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Membership.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Membership.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Membership.Name)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MembershipPayment_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.Membership.Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MembershipPayment_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

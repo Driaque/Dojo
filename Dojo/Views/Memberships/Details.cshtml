@@ -1,58 +1,61 @@
 ﻿@model Dojo.Models.Membership
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Membership Details";
 }
 
-<h2>Details</h2>
+<div class="box box-info">
 
-<div>
-    <h4>Membership</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+    <div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.ValidTill)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ValidTill)
-        </dd>*@
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.ValidTill)
+                </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Membership_ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                <dd>
+                    @Html.DisplayFor(model => model.ValidTill)
+                </dd>*@
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Membership_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>
