@@ -18,8 +18,9 @@ namespace Dojo.Models
         public Student()
         {
             this.Attendances = new HashSet<Attendance>();
-            this.ProductPayments = new HashSet<ProductPayment>();
             this.HAS_CERTIFICATE = new HashSet<HAS_CERTIFICATE>();
+            this.ProductPayments = new HashSet<ProductPayment>();
+            this.TestPayments = new HashSet<TestPayment>();
             this.Parents = new HashSet<Parent>();
         }
     
@@ -43,12 +44,14 @@ namespace Dojo.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attendance> Attendances { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HAS_CERTIFICATE> HAS_CERTIFICATE { get; set; }
         public virtual Membership Membership { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductPayment> ProductPayments { get; set; }
         public virtual Rank Rank { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HAS_CERTIFICATE> HAS_CERTIFICATE { get; set; }
+        public virtual ICollection<TestPayment> TestPayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parent> Parents { get; set; }
     }

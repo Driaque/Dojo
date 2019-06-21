@@ -1,0 +1,42 @@
+﻿@model Dojo.Models.MembershipPayment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MembershipPayment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STUDENT_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STUDENT_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Membership.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Membership.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MembershipPayment_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

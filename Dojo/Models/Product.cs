@@ -26,6 +26,8 @@ namespace Dojo.Models
         public string CostPrice { get; set; }
         public string SellingPrice { get; set; }
         public string QuantityInStock { get; set; }
+        public string QuantitySold { get; set; }
+        public string Profit { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductPayment> ProductPayments { get; set; }

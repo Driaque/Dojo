@@ -25,6 +25,7 @@ namespace Dojo.Models
         public string Description { get; set; }
         public string Price { get; set; }
         public string Rank_ID { get; set; }
+        public string Profit { get; set; }
     
         public virtual Rank Rank { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

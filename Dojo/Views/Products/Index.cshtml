@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Dojo.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CostPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SellingPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantitySold)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profit)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CostPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SellingPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityInStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantitySold)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profit)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Product_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Product_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Product_ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<div>
+   <h3>Total Profit from Product</h3> @(ViewBag.TotalProfit != null ? ViewBag.TotalProfit : string.Empty)
+</div>

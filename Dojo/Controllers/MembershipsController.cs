@@ -17,6 +17,7 @@ namespace Dojo.Controllers
         // GET: Memberships
         public ActionResult Index()
         {
+            ViewBag.TotalProfit = TotalProfit();
             return View(db.Memberships.ToList());
         }
 
@@ -117,6 +118,15 @@ namespace Dojo.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public string TotalProfit()
+        {
+
+            var memberships = db.Memberships.ToList();
+            var total = memberships.Sum(i => Convert.ToDecimal(i.Profit));
+
+            return total.ToString();
+        }
+
 
         protected override void Dispose(bool disposing)
         {

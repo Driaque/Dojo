@@ -17,6 +17,7 @@ namespace Dojo.Models
         public string STUDENT_ID { get; set; }
         public string Certificate_ID { get; set; }
         public string DateObtained { get; set; }
+        public string Issue_ID { get; set; }
     
         public virtual Certificate Certificate { get; set; }
         public virtual Student Student { get; set; }

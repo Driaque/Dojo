@@ -28,6 +28,7 @@ namespace Dojo.Models
         public virtual DbSet<Attendance> Attendances { get; set; }
         public virtual DbSet<Certificate> Certificates { get; set; }
         public virtual DbSet<Class> Classes { get; set; }
+        public virtual DbSet<HAS_CERTIFICATE> HAS_CERTIFICATE { get; set; }
         public virtual DbSet<Membership> Memberships { get; set; }
         public virtual DbSet<MembershipPayment> MembershipPayments { get; set; }
         public virtual DbSet<Parent> Parents { get; set; }
@@ -37,6 +38,5 @@ namespace Dojo.Models
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<TestPayment> TestPayments { get; set; }
-        public virtual DbSet<HAS_CERTIFICATE> HAS_CERTIFICATE { get; set; }
     }
 }

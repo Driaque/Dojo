@@ -23,9 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Duration)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.ValidTill)
-        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Profit)
+        </th>
         <th></th>
     </tr>
 
@@ -43,9 +43,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Duration)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.ValidTill)
-        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Profit)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Membership_ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.Membership_ID }) |
@@ -55,3 +55,6 @@
 }
 
 </table>
+<div>
+    <h5>Total Profit from Product</h5> @(ViewBag.TotalProfit != null ? ViewBag.TotalProfit : string.Empty)
+</div>

@@ -16,8 +16,10 @@ namespace Dojo.Models
     {
         public string TestPayment_ID { get; set; }
         public string Test_ID { get; set; }
+        public string STUDENT_ID { get; set; }
         public System.DateTime Date { get; set; }
     
+        public virtual Student Student { get; set; }
         public virtual Test Test { get; set; }
     }
 }

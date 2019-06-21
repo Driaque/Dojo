@@ -16,7 +16,10 @@ namespace Dojo.Models
     {
         public string Payment_ID { get; set; }
         public string Product_ID { get; set; }
+        public string STUDENT_ID { get; set; }
         public string Date { get; set; }
+        public string Quantity { get; set; }
+        public string Total { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Student Student { get; set; }
