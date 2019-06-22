@@ -60,7 +60,37 @@
         }
 
     </table>
-    <div>
-        <h5><b>Total Profit from Membership Subscriptions:  @(ViewBag.TotalProfit != null ? ViewBag.TotalProfit : string.Empty)</b></h5>
+
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-20 col-xs-4">
+                <!-- small box -->
+                <div class="small-box bg-aqua-gradient">
+                    <div class="inner">
+                        <h3> <p> Profit for the month of @DateTime.Now.ToString("MMMM"):</p></h3>
+                        <h3>@ViewBag.TotalProfit</h3>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-tag"></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-20 col-xs-4">
+                <!-- small box -->
+                <div class="small-box bg-green-gradient">
+                    <div class="inner">
+                        <h3> <p>Total Profit from Membership Subscriptions:</p></h3>
+                        <h3>@ViewBag.TotalProfit</h3>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-tag"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
-    </div>
+
+</div>
