@@ -39,7 +39,7 @@ namespace Dojo.Controllers
         // GET: TestPayments/Create
         public ActionResult Create()
         {
-            ViewBag.STUDENT_ID = new SelectList(db.Students, "STUDENT_ID", "STUDENT_Fname");
+            ViewBag.STUDENTs = db.Students.ToList();
             ViewBag.Test_ID = new SelectList(db.Tests, "Test_ID", "Name");
             return View();
         }

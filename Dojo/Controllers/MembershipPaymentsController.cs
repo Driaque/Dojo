@@ -41,7 +41,7 @@ namespace Dojo.Controllers
         public ActionResult Create()
         {
             ViewBag.Membership_ID = new SelectList(db.Memberships, "Membership_ID", "Name");
-            ViewBag.STUDENT_ID = new SelectList(db.Students, "STUDENT_ID", "STUDENT_Fname");
+            ViewBag.STUDENTs = db.Students.ToList();
             return View();
         }
 

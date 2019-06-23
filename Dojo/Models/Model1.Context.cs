@@ -12,19 +12,19 @@ namespace Dojo.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class AdtProjectEntities : DbContext
     {
         public AdtProjectEntities()
             : base("name=AdtProjectEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Attendance> Attendances { get; set; }
         public virtual DbSet<Certificate> Certificates { get; set; }
         public virtual DbSet<Class> Classes { get; set; }
@@ -38,5 +38,7 @@ namespace Dojo.Models
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<TestPayment> TestPayments { get; set; }
+
+       
     }
 }

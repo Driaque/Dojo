@@ -16,8 +16,6 @@ namespace Dojo.Controllers
         private AdtProjectEntities db = new AdtProjectEntities();
 
         // GET: Students
-
-        // GET: EMPLOYEEs
         public ActionResult Index(string sortOrder, string searchString, string parentString, string townString, string currentFilter, int? page)
         {
             ViewBag.IdSortParm = string.IsNullOrEmpty(sortOrder) ? "id_desc" : "";

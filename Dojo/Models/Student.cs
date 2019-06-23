@@ -29,6 +29,7 @@ namespace Dojo.Models
         public string STUDENT_ID { get; set; }
         public string STUDENT_Fname { get; set; }
         public string STUDENT_Lname { get; set; }
+        public string Fullname { get { return this.STUDENT_Fname + " " + this.STUDENT_Lname; } }
         [DisplayName("date of birth")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
