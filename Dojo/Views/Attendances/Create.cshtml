@@ -24,7 +24,7 @@
             @Html.LabelFor(model => model.STUDENT_ID, "Student Name:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
 
-                @Html.DropDownListFor(m => m.STUDENT_ID, new SelectList(ViewBag.STUDENTs, "STUDENT_ID", "STUDENT_Fname"), new { @class = "form-control chosen-select" })
+                @Html.DropDownListFor(m => m.STUDENT_ID, new SelectList(ViewBag.STUDENTs, "STUDENT_ID", "Fullname"), new { @class = "form-control chosen-select" })
                 @Html.ValidationMessageFor(model => model.STUDENT_ID, "", new { @class = "text-danger" })
             </div>
         </div>
