@@ -33,4 +33,10 @@ namespace Dojo.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
     }
+    public enum ParentTitle
+    {
+        Father,
+        Mother,
+        Guardian
+    }
 }

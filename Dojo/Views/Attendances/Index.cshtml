@@ -19,24 +19,26 @@
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
+               Firstname
             </th>
-            <th></th>
+            <th>Lastname</th>
         </tr>
 
         @foreach (var item in Model)
         {
+            var date = item.Date.ToString("d/M/yyyy");
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => date)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Student.STUDENT_Fname)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Attendance_ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Attendance_ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Attendance_ID })
+                    @Html.DisplayFor(modelItem => item.Student.STUDENT_Lname)
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Attendance_ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Attendance_ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Attendance_ID })*@
                 </td>
             </tr>
         }

@@ -15,9 +15,9 @@
     </p>
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.STUDENT_ID)
-            </th>
+            @*<th>
+                Student
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
@@ -29,12 +29,14 @@
 
         @foreach (var item in Model)
         {
+            var date = item.Date.ToShortDateString();
+
             <tr>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.STUDENT_ID)
-                </td>
+                </td>*@
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => date)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Membership.Name)

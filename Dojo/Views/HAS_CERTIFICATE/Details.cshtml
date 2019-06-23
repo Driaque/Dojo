@@ -7,8 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>HAS_CERTIFICATE</h4>
-    <hr />
+  
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.DateObtained)
@@ -33,10 +32,17 @@
         <dd>
             @Html.DisplayFor(model => model.Student.STUDENT_Fname)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.STUDENT_Lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.STUDENT_Lname)
+        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Issue_ID }) |
+ |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -18,8 +18,7 @@ namespace Dojo.Models
         public string Membership_ID { get; set; }
         public string STUDENT_ID { get; set; }
         public System.DateTime Date { get; set; }
-        public virtual Student Student { get; set; }
-
+    
         public virtual Membership Membership { get; set; }
     }
 }
