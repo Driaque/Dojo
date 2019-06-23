@@ -1,93 +1,117 @@
-﻿@model IEnumerable<Dojo.Models.Student>
+﻿
+@model PagedList.IPagedList<Dojo.Models.Student>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Students";
 }
-
 <div class="box box-info">
-
     <div class="box-header with-border">
-        <h2>@ViewBag.Title</h2>
+        <h1 class="box-title">@ViewBag.Title</h1>
+    </div>
+    <div>
+        <span>@(ViewBag.Exception != null ? ViewBag.Exception : string.Empty)</span>
     </div>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+
+    @using (Html.BeginForm("Index", "Students", FormMethod.Get))
+    {
+        <div class="box-body">
+            <p>
+                <h4>@Html.ActionLink("Create New", "Create")</h4> <br />
+
+                Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+                Find by Parent: @Html.TextBox("ParentString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+                Find by Town: @Html.TextBox("TownString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        </div>
+    }
+    <table id="example1" class="table table-bordered table-striped">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.STUDENT_Fname)
+                @Html.ActionLink("Firstname", "Index", new { sortOrder = ViewBag.IdSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.STUDENT_Lname)
+                @Html.ActionLink("Lastname", "Index", new { sortOrder = ViewBag.NameSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                PhoneNumber
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.email)
+                Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateJoined)
+                Town
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsActive)
+                @Html.ActionLink("Active", "Index", new { sortOrder = ViewBag.NameSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsParent)
+                @Html.ActionLink("Attendance", "Index", new { sortOrder = ViewBag.AttendSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Parent_ID)
+                Parent Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Membership.Name)
+                @Html.ActionLink("Membership", "Index", new { sortOrder = ViewBag.NameSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rank.Title)
+                @Html.ActionLink("Rank", "Index", new { sortOrder = ViewBag.RankSortParm })
             </th>
+
             <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.STUDENT_Fname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.STUDENT_Lname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateJoined)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsParent)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Parent_ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Membership.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rank.Title)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.STUDENT_ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.STUDENT_ID })
-
-                </td>
-            </tr>
+            var attend = item.AttendanceCount ?? "0";
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT_Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT_Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Town)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => attend)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parent_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Membership.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rank.Title)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.STUDENT_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.STUDENT_ID })
+            </td>
+        </tr>
         }
 
     </table>
-    </div>
+    <br />
+
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+</div>

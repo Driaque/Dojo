@@ -136,7 +136,7 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <Property Name="IsParent" Type="bit" Nullable="false" />
           <Property Name="Rank_ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Parent_ID" Type="varchar" MaxLength="50" />
-          <Property Name="AttendanceCount" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="AttendanceCount" Type="nchar" MaxLength="10" />
           <Property Name="MembershipValidTill" Type="date" />
         </EntityType>
         <EntityType Name="Test">
@@ -562,7 +562,7 @@ warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary
           <Property Name="IsParent" Type="Boolean" Nullable="false" />
           <Property Name="Rank_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Parent_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AttendanceCount" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="AttendanceCount" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="MembershipValidTill" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Attendances" Relationship="Self.FK_Attendance_Student" FromRole="Student" ToRole="Attendance" />
           <NavigationProperty Name="HAS_CERTIFICATE" Relationship="Self.FK_HAS_CERTIFICATE_Student" FromRole="Student" ToRole="HAS_CERTIFICATE" />

@@ -52,6 +52,9 @@ namespace Dojo.Controllers
         {
             if (ModelState.IsValid)
             {
+                var count = db.Classes.ToList().Count();
+                @class.Class_ID = (count + 1).ToString();
+
                 db.Classes.Add(@class);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -19,7 +19,10 @@
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
+               First Name
+            </th>
+            <th>
+               Last Name
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Test.Name)
@@ -29,22 +32,26 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student.STUDENT_Fname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Test.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.TestPayment_ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.TestPayment_ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.TestPayment_ID })
-                </td>
-            </tr>
+            var date = item.Date.ToShortDateString();
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.STUDENT_Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.STUDENT_Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Test.Name)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.TestPayment_ID }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.TestPayment_ID }) 
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.TestPayment_ID })*@
+            </td>
+        </tr>
         }
 
     </table>

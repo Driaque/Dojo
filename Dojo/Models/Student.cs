@@ -11,7 +11,9 @@ namespace Dojo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,6 +29,9 @@ namespace Dojo.Models
         public string STUDENT_ID { get; set; }
         public string STUDENT_Fname { get; set; }
         public string STUDENT_Lname { get; set; }
+        [DisplayName("date of birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime STUDENT_DOB { get; set; }
         public string StreetName { get; set; }
         public string Town { get; set; }

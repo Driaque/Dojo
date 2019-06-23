@@ -38,6 +38,7 @@ namespace Dojo.Controllers
         // GET: Parents/Create
         public ActionResult Create()
         {
+            ViewBag.ParentTitle = Enum.GetValues(typeof(ParentTitle));
             return View();
         }
 
@@ -48,6 +49,7 @@ namespace Dojo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Parent_ID,Parent_FName,Parent_LName,Parent_Title,PhoneNumber,Email,StreetName,Town,PostalCode")] Parent parent)
         {
+            ViewBag.ParentTitle = Enum.GetValues(typeof(ParentTitle));
             if (ModelState.IsValid)
             {
                 var count = db.Parents.ToList().Count();

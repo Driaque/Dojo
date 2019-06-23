@@ -11,13 +11,13 @@
     </div>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("  Add Class", "Create")
     </p>
     <table class="table">
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.ClaseCode)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -31,22 +31,23 @@
                 @Html.DisplayNameFor(model => model.EndTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rank.Title)
+               RANK
             </th>
             <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
+            var day = item.Day.ToUpper();
             <tr>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.ClaseCode)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Day)
+                    @Html.DisplayFor(modelItem => day)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StartTime)
